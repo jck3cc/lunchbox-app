@@ -258,6 +258,40 @@ function exportData() {
   a.href = url; a.download = 'lunchbox-backup.json';
   document.body.appendChild(a); a.click(); a.remove();
   URL.revokeObjectURL(url);
+  state.settings.lastBackup = Date.now();
+  save();
+  try { toast('💾 Backup saved! Keep that file safe — email it to yourself or drop it in cloud storage.'); } catch (_) {}
+}
+
+// ---------- Backup nudge (gentle, dismissible) ----------
+const SEED_IDS = new Set(SEED_ITEMS.map(i => i.id));
+const BK_DAY = 86400000;
+function hasUserData() {
+  const customFoods = state.items.some(i => !SEED_IDS.has(i.id));
+  const photos = state.items.some(i => i.photo);
+  const favs = Object.keys(state.favorites || {}).length > 0;
+  const plan = Object.values(state.plan || {}).some(p =>
+    p && (((p.lunch && p.lunch.length) || (p.snack && p.snack.length)) || (Array.isArray(p) && p.length)));
+  return customFoods || photos || favs || plan;
+}
+function backupDue() {
+  if (!hasUserData()) return false;                  // nothing at stake yet — don't nag
+  const s = state.settings;
+  if (s.backupSnoozeUntil && Date.now() < s.backupSnoozeUntil) return false;
+  if (!s.lastBackup) return true;                    // never backed up
+  return (Date.now() - s.lastBackup) > 14 * BK_DAY;  // backup is getting stale
+}
+function backupNudge() {
+  if (!backupDue()) return null;
+  const card = el('<div class="nudge card"><div>💾 <b>Keep a backup.</b> Your foods, photos &amp; weekly plans are saved only on this device. Export a copy so a phone hiccup never wipes your work.</div></div>');
+  const actions = el('<div class="nudge-actions"></div>');
+  const now = el('<button class="btn small">Back up now</button>');
+  now.onclick = () => { exportData(); render(); };
+  const later = el('<button class="btn ghost small">Later</button>');
+  later.onclick = () => { state.settings.backupSnoozeUntil = Date.now() + 10 * BK_DAY; save(); render(); };
+  actions.append(now, later);
+  card.append(actions);
+  return card;
 }
 function importData(file) {
   const reader = new FileReader();
@@ -315,6 +349,9 @@ function el(html) {
 // ============================================================
 function renderBuilder() {
   const wrap = el('<div></div>');
+
+  const nudge = backupNudge();
+  if (nudge) wrap.append(nudge);
 
   // hero banner (only worth showing on an empty box, as a friendly welcome)
   if (builderDraft.lunch.length + builderDraft.snack.length === 0) {
@@ -593,15 +630,20 @@ function renderPlanner() {
   });
   wrap.append(tpl);
 
-  // ---- Data toolbar ----
-  wrap.append(el('<div class="section-label" style="margin-top:18px">Data &amp; settings</div>'));
-  const bar = el('<div class="toolbar"></div>');
-  const exp = el('<button class="btn secondary small">⬇️ Export</button>'); exp.onclick = exportData;
-  const imp = el('<button class="btn secondary small">⬆️ Import</button>');
+  // ---- Backup + settings ----
+  wrap.append(el('<div class="section-label" style="margin-top:18px">Back up &amp; settings</div>'));
+  const exp = el('<button class="btn" style="width:100%">💾 Back up my data</button>'); exp.onclick = exportData;
+  wrap.append(exp);
+  const last = state.settings.lastBackup
+    ? `Last backup: ${new Date(state.settings.lastBackup).toLocaleDateString()}.`
+    : 'You haven’t backed up yet.';
+  wrap.append(el(`<div class="hint">${last} Saves one file with all your foods, photos &amp; plans. Your data lives only on this device, so back up now and then — especially before a trip.</div>`));
+  const bar = el('<div class="toolbar" style="margin-top:10px"></div>');
+  const imp = el('<button class="btn secondary small">⬆️ Restore backup</button>');
   imp.onclick = () => { const inp = el('<input type="file" accept="application/json,.json" style="display:none">'); inp.onchange = (e) => { if (e.target.files[0]) importData(e.target.files[0]); }; document.body.appendChild(inp); inp.click(); inp.remove(); };
   const prn = el('<button class="btn secondary small">🖨️ Print week</button>'); prn.onclick = () => window.print();
   const thm = el(`<button class="btn secondary small">${state.settings.theme === 'dark' ? '☀️ Light' : '🌙 Dark'}</button>`); thm.onclick = toggleTheme;
-  bar.append(exp, imp, prn, thm);
+  bar.append(imp, prn, thm);
   wrap.append(bar);
   return wrap;
 }

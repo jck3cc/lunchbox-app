@@ -17,6 +17,12 @@
   --tab-h: 64px;
 }
 
+/* ---- Backup nudge + hint text ---- */
+.nudge { border: 1px solid var(--accent); display: flex; flex-direction: column; gap: 10px; }
+.nudge b { color: var(--accent-ink); }
+.nudge-actions { display: flex; gap: 10px; }
+.hint { font-size: 13px; color: var(--muted); line-height: 1.45; margin-top: 6px; }
+
 * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
 
 html, body {
