@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+  <meta name="apple-mobile-web-app-title" content="Lunchbox" />
+  <meta name="theme-color" content="#f4a259" />
+  <link rel="manifest" href="manifest.webmanifest" />
+  <link rel="apple-touch-icon" href="icons/apple-touch-icon.png" />
+  <link rel="icon" type="image/png" href="icons/icon-192.png" />
+  <link rel="stylesheet" href="styles.css" />
+  <title>Lunchbox</title>
+</head>
+<body>
+  <header class="app-header">
+    <img class="app-logo" src="art/logo.png" alt="" />
+    <div class="app-headtext">
+      <h1 class="app-title">Lunchbox</h1>
+      <p class="app-sub">Packing for a little one</p>
+    </div>
+  </header>
+
+  <main id="view" class="view"><!-- active view renders here --></main>
+
+  <nav class="tabbar" id="tabbar">
+    <button class="tab" data-view="builder"><span class="tab-icon">🍱</span><span>Pack</span></button>
+    <button class="tab" data-view="planner"><span class="tab-icon">🗓️</span><span>Week</span></button>
+    <button class="tab" data-view="library"><span class="tab-icon">📖</span><span>Foods</span></button>
+    <button class="tab" data-view="shopping"><span class="tab-icon">🛒</span><span>Shop</span></button>
+  </nav>
+
+  <!-- Lightweight modal host for add/edit item -->
+  <div class="modal-backdrop" id="modal-backdrop" hidden>
+    <div class="modal" id="modal" role="dialog" aria-modal="true"></div>
+  </div>
+
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

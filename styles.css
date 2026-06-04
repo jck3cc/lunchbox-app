@@ -1,0 +1,334 @@
+/* styles.css — mobile-first, warm food-app look. Big tap targets for one-handed
+   morning use; scales up cleanly to iPad. Safe-area insets keep it clear of the
+   iPhone/iPad home bar when installed to the home screen. */
+
+:root {
+  --bg: #fff8f0;
+  --card: #ffffff;
+  --ink: #3a2e26;
+  --muted: #9c8b7d;
+  --line: #efe4d8;
+  --accent: #f4a259;
+  --accent-ink: #7a4a17;
+  --good: #6cc070;
+  --danger: #e76f8f;
+  --radius: 16px;
+  --shadow: 0 2px 10px rgba(120, 90, 60, 0.08);
+  --tab-h: 64px;
+}
+
+* { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+
+html, body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, system-ui, sans-serif;
+  font-size: 17px;
+  line-height: 1.4;
+}
+
+body {
+  padding-bottom: calc(var(--tab-h) + env(safe-area-inset-bottom));
+  max-width: 720px;        /* center nicely on iPad/desktop */
+  margin: 0 auto;
+}
+
+/* ---- Header ---- */
+.app-header {
+  padding: calc(env(safe-area-inset-top) + 14px) 20px 14px;
+  background: linear-gradient(135deg, #ffd9a8, #ffeede);
+  border-bottom: 1px solid var(--line);
+  display: flex; align-items: center; gap: 13px;
+}
+.app-logo { width: 46px; height: 46px; border-radius: 13px; flex: none; box-shadow: 0 2px 8px rgba(160,90,40,.22); }
+.app-headtext { min-width: 0; }
+.app-title { margin: 0; font-size: 25px; letter-spacing: -0.01em; }
+.app-sub { margin: 1px 0 0; color: var(--accent-ink); font-size: 13px; opacity: .85; }
+
+/* hero banner (top of Pack view) */
+.hero {
+  position: relative; border-radius: 18px; overflow: hidden; margin-bottom: 14px;
+  box-shadow: var(--shadow); border: 1px solid var(--line); aspect-ratio: 5 / 2; background: #ffefdc;
+}
+.hero img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 42%; display: block; }
+.hero-cap {
+  position: absolute; left: 0; right: 0; bottom: 0; padding: 26px 16px 12px;
+  background: linear-gradient(to top, rgba(40,28,18,.55), rgba(40,28,18,0));
+  color: #fff; font-weight: 700; font-size: 16px; text-shadow: 0 1px 4px rgba(0,0,0,.4);
+}
+
+/* ---- Views ---- */
+.view { padding: 16px; min-height: 60vh; }
+.view-head { display: flex; align-items: center; justify-content: space-between; margin: 4px 0 14px; }
+.view-head h2 { margin: 0; font-size: 22px; }
+.section-label { font-size: 13px; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); margin: 18px 0 8px; font-weight: 600; }
+
+/* ---- Buttons ---- */
+button { font: inherit; cursor: pointer; }
+.btn {
+  border: none; border-radius: 999px; padding: 11px 18px;
+  background: var(--accent); color: #fff; font-weight: 600;
+  box-shadow: var(--shadow); min-height: 44px;
+}
+.btn.secondary { background: #fff; color: var(--accent-ink); border: 1.5px solid var(--accent); box-shadow: none; }
+.btn.ghost { background: transparent; color: var(--muted); box-shadow: none; padding: 8px 10px; }
+.btn.small { padding: 7px 12px; font-size: 14px; min-height: 36px; }
+.btn:active { transform: scale(0.97); }
+
+/* ---- Cards / item rows ---- */
+.card { background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); box-shadow: var(--shadow); }
+
+.item-row {
+  display: flex; align-items: center; gap: 12px;
+  padding: 12px 14px; background: var(--card);
+  border: 1px solid var(--line); border-radius: var(--radius);
+  margin-bottom: 10px; box-shadow: var(--shadow);
+}
+.item-emoji { font-size: 26px; width: 38px; text-align: center; flex: none; }
+.item-main { flex: 1 1 auto; min-width: 0; }
+.item-name { font-weight: 600; overflow: hidden; text-overflow: ellipsis; }
+.item-prep { font-size: 13px; color: var(--muted); margin-top: 2px; }
+.item-actions { display: flex; gap: 6px; flex: none; }
+
+.pill { display: inline-block; font-size: 11px; padding: 2px 8px; border-radius: 999px; background: #f4ede4; color: var(--muted); margin: 2px 4px 0 0; }
+.pill.allergen { background: #fde6ec; color: #c14b6c; }
+.pill.seedflag { background: #fbe2c4; color: #9a5b14; font-weight: 600; }
+.pill.cold { background: #e2f1fb; color: #2b6c93; }
+.badges { margin-top: 4px; line-height: 1.9; }
+.item-flag { font-size: 12px; color: #9a5b14; background: #fff4e3; border-radius: 8px; padding: 5px 8px; margin-top: 6px; }
+
+/* school rules (collapsible) + packing reminders */
+.rules { padding: 10px 14px; margin-bottom: 12px; }
+.rules summary { font-weight: 600; cursor: pointer; list-style: none; }
+.rules summary::-webkit-details-marker { display: none; }
+.rules ul { margin: 10px 0 2px; padding-left: 2px; list-style: none; }
+.rules li { padding: 3px 0; font-size: 14px; color: var(--ink); }
+.reminders { margin-top: 12px; display: flex; flex-direction: column; gap: 6px; }
+.reminder { font-size: 13px; color: var(--muted); background: #f9f3ec; border-radius: 10px; padding: 8px 10px; }
+.reminder.warn { color: #2b6c93; background: #e8f4fb; }
+
+/* round add/remove control */
+.qty-btn {
+  width: 40px; height: 40px; border-radius: 50%; flex: none;
+  border: 1.5px solid var(--accent); background: #fff; color: var(--accent-ink);
+  font-size: 22px; line-height: 1; display: grid; place-items: center;
+}
+.qty-btn.in { background: var(--accent); color: #fff; }
+
+/* ---- Category chips (filter) ---- */
+.chips { display: flex; gap: 8px; overflow-x: auto; padding: 4px 0 10px; -webkit-overflow-scrolling: touch; }
+.chip {
+  flex: none; border: 1.5px solid var(--line); background: #fff; color: var(--ink);
+  border-radius: 999px; padding: 8px 14px; font-size: 14px; min-height: 40px;
+}
+.chip.active { background: var(--accent); color: #fff; border-color: var(--accent); }
+
+/* ---- Search ---- */
+.search { width: 100%; padding: 12px 16px; border-radius: 999px; border: 1.5px solid var(--line); background: #fff; font-size: 16px; margin-bottom: 6px; }
+.search:focus { outline: none; border-color: var(--accent); }
+
+/* ---- Slot toggle (lunch / snack) ---- */
+.seg { display: flex; gap: 6px; background: #f4ede4; border-radius: 999px; padding: 4px; margin-bottom: 14px; }
+.seg-btn { flex: 1; border: none; background: transparent; border-radius: 999px; padding: 9px 12px; font-weight: 600; color: var(--muted); min-height: 42px; }
+.seg-btn.on { background: #fff; color: var(--accent-ink); box-shadow: var(--shadow); }
+
+/* slot blocks in the box summary + planner */
+.slot-block { margin-bottom: 8px; }
+.slot-head { font-size: 13px; font-weight: 700; color: var(--accent-ink); margin: 2px 0 6px; }
+
+/* portion hint line */
+.portion { font-size: 12px; color: #8a7d5a; margin-top: 3px; }
+
+/* quick-fill */
+.qf-row { margin-bottom: 14px; }
+.qf-btn { width: 100%; background: linear-gradient(135deg, #f4a259, #ef8f6f); }
+.qf-hint { font-size: 12px; color: var(--muted); text-align: center; margin-top: 6px; }
+
+/* favorite star */
+.star-btn { border: none; background: none; font-size: 22px; line-height: 1; padding: 2px 4px; color: #d9c9a6; }
+.star-btn.on { color: #f3b63a; }
+.item-actions.col { flex-direction: column; align-items: center; gap: 4px; }
+
+/* ---- Balance meter (builder) ---- */
+.balance { display: flex; gap: 8px; margin: 4px 0 16px; }
+.balance .b {
+  flex: 1; text-align: center; padding: 10px 4px; border-radius: 12px;
+  background: #f4ede4; color: var(--muted); font-size: 13px; font-weight: 600;
+  border: 2px dashed transparent;
+}
+.balance .b.on { background: #e9f7ea; color: #3f8a47; border-color: #bfe6c4; }
+
+/* ---- Builder summary box ---- */
+.box-summary { padding: 14px; margin-bottom: 16px; }
+.box-list { list-style: none; margin: 0; padding: 0; }
+.box-list li { display: flex; justify-content: space-between; padding: 6px 0; border-bottom: 1px dashed var(--line); }
+.box-list li:last-child { border-bottom: none; }
+.empty { color: var(--muted); text-align: center; padding: 24px 10px; }
+.empty-art { width: 200px; max-width: 60%; height: auto; display: block; margin: 0 auto 6px; border-radius: 18px; }
+
+/* ---- Weekly planner ---- */
+.day-card { padding: 14px; margin-bottom: 12px; }
+.day-head { display: flex; align-items: center; justify-content: space-between; }
+.day-name { font-weight: 700; font-size: 17px; }
+.day-items { margin-top: 8px; display: flex; flex-wrap: wrap; gap: 6px; }
+.day-chip { background: #f4ede4; border-radius: 999px; padding: 4px 10px; font-size: 13px; }
+.day-empty { color: var(--muted); font-size: 14px; margin-top: 6px; }
+.day-balance { display: flex; gap: 4px; margin-top: 8px; }
+.dot { width: 10px; height: 10px; border-radius: 50%; background: #e6dccf; }
+.dot.on { background: var(--good); }
+
+/* ---- Shopping list ---- */
+.shop-row { display: flex; align-items: center; gap: 12px; padding: 12px 14px; border-bottom: 1px solid var(--line); }
+.shop-row:last-child { border-bottom: none; }
+.shop-check { width: 26px; height: 26px; border-radius: 8px; border: 2px solid var(--accent); flex: none; display: grid; place-items: center; background: #fff; }
+.shop-check.done { background: var(--good); border-color: var(--good); color: #fff; }
+.shop-name { flex: 1; }
+.shop-row.done .shop-name { text-decoration: line-through; color: var(--muted); }
+.shop-from { font-size: 12px; color: var(--muted); }
+
+/* ---- Tab bar ---- */
+.tabbar {
+  position: fixed; left: 0; right: 0; bottom: 0;
+  height: calc(var(--tab-h) + env(safe-area-inset-bottom));
+  padding-bottom: env(safe-area-inset-bottom);
+  display: flex; background: #fff; border-top: 1px solid var(--line);
+  max-width: 720px; margin: 0 auto;
+}
+.tab {
+  flex: 1; border: none; background: none; color: var(--muted);
+  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px;
+  font-size: 11px; font-weight: 600;
+}
+.tab .tab-icon { font-size: 22px; filter: grayscale(0.4); opacity: .6; }
+.tab.active { color: var(--accent-ink); }
+.tab.active .tab-icon { filter: none; opacity: 1; }
+
+/* ---- Modal ---- */
+.modal-backdrop {
+  position: fixed; inset: 0; background: rgba(58, 46, 38, .45);
+  display: grid; place-items: end center; z-index: 50;
+}
+/* the HTML `hidden` attribute must win over the display:grid above,
+   otherwise the backdrop stays on screen and silently eats all taps. */
+.modal-backdrop[hidden] { display: none !important; }
+.modal {
+  position: relative;
+  width: 100%; max-width: 720px; max-height: 88vh; overflow-y: auto;
+  background: var(--bg); border-radius: 22px 22px 0 0; padding: 20px 18px calc(20px + env(safe-area-inset-bottom));
+  box-shadow: 0 -8px 30px rgba(0,0,0,.18);
+}
+.modal-close {
+  position: absolute; top: 12px; right: 14px; width: 38px; height: 38px; border-radius: 50%;
+  border: none; background: rgba(0,0,0,.07); color: var(--ink); font-size: 17px; line-height: 1;
+  display: grid; place-items: center; z-index: 3; cursor: pointer;
+}
+.modal-close:active { transform: scale(.92); }
+.modal h3 { margin: 4px 40px 14px 0; }
+.field { margin-bottom: 14px; }
+.field label { display: block; font-size: 13px; color: var(--muted); margin-bottom: 5px; font-weight: 600; }
+.field input, .field select, .field textarea {
+  width: 100%; padding: 12px 14px; border-radius: 12px; border: 1.5px solid var(--line);
+  background: #fff; font-size: 16px; font-family: inherit;
+}
+.field textarea { resize: vertical; min-height: 60px; }
+.modal-actions { display: flex; gap: 10px; margin-top: 8px; }
+.modal-actions .btn { flex: 1; }
+
+.fab { position: fixed; right: 18px; bottom: calc(var(--tab-h) + env(safe-area-inset-bottom) + 14px); }
+@media (min-width: 740px) { .fab { right: calc(50% - 360px + 18px); } }
+
+/* ---- Eat-the-rainbow meter ---- */
+.rainbow { display: flex; align-items: center; gap: 8px; margin: 10px 0 4px; }
+.rainbow-label { font-size: 13px; color: var(--muted); font-weight: 600; }
+.rdot { font-size: 18px; transition: filter .15s, opacity .15s; }
+.rdot.off { filter: grayscale(1); opacity: .3; }
+
+/* ---- Nutrition highlights ---- */
+.nutri { display: flex; flex-wrap: wrap; gap: 6px; margin: 8px 0 2px; }
+.ndot { font-size: 11px; padding: 3px 9px; border-radius: 999px; background: #f4ede4; color: var(--muted); border: 1px solid transparent; }
+.ndot.on { background: #e9f7ea; color: #3f8a47; border-color: #bfe6c4; font-weight: 600; }
+
+/* ---- Food photos ---- */
+.item-photo { width: 38px; height: 38px; border-radius: 10px; object-fit: cover; display: block; }
+.photo-wrap { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+.editor-photo { width: 84px; height: 84px; border-radius: 14px; object-fit: cover; }
+
+/* ---- Quick-fill + kid-pick buttons ---- */
+.qf-btns { display: flex; gap: 8px; }
+.qf-btns .qf-btn { flex: 1; }
+
+/* ---- Let-them-pick flow ---- */
+.kid-progress { text-align: center; color: var(--muted); font-size: 13px; margin-bottom: 14px; }
+.kid-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(90px, 1fr)); gap: 12px; }
+.kid-card {
+  border: 2px solid var(--line); background: var(--card); border-radius: 18px; padding: 16px 8px;
+  display: flex; flex-direction: column; align-items: center; gap: 8px; min-height: 120px; justify-content: center;
+}
+.kid-card:active { transform: scale(.96); border-color: var(--accent); }
+.kid-thumb { font-size: 40px; line-height: 1; }
+.kid-thumb .item-photo { width: 64px; height: 64px; border-radius: 14px; }
+.kid-name { font-size: 13px; font-weight: 600; text-align: center; color: var(--ink); }
+
+/* ---- Recipe badge + modal ---- */
+.pill.recipe { background: #e7e0f5; color: #6b4fa0; font-weight: 600; }
+.rcp-meta { font-size: 13px; color: var(--muted); margin-bottom: 8px; }
+.rcp-steps { margin: 6px 0 0; padding-left: 22px; }
+.rcp-steps li { padding: 4px 0; }
+
+/* ---- Foods explored counter ---- */
+.explored { font-size: 13px; color: #6b4fa0; font-weight: 600; }
+
+/* ---- Planner: day actions, templates, toolbar ---- */
+.day-actions { display: flex; gap: 10px; }
+.section-label.picker-head { position: sticky; top: 0; z-index: 6; background: var(--bg); padding: 9px 0; margin-top: 4px; }
+.tpl-row { display: flex; align-items: center; gap: 8px; padding: 8px 2px; border-top: 1px solid var(--line); margin-top: 8px; }
+.tpl-name { flex: 1; font-weight: 600; }
+.toolbar { display: flex; flex-wrap: wrap; gap: 8px; }
+.toolbar .btn { flex: 1; min-width: 120px; }
+
+/* ---- Shopping: manual add + recipe ingredients ---- */
+.shop-add { display: flex; gap: 8px; margin-bottom: 12px; }
+.shop-add .search { margin-bottom: 0; }
+.shop-add .btn { flex: none; }
+.rcp-ings { display: flex; flex-wrap: wrap; gap: 6px; }
+
+/* ---- Shopping aisles ---- */
+.aisle-head { font-size: 13px; font-weight: 700; color: var(--accent-ink); margin: 16px 0 6px; text-transform: uppercase; letter-spacing: .04em; }
+.shop-qty { font-size: 12px; color: var(--accent-ink); background: #f4ede4; border-radius: 999px; padding: 1px 7px; margin-left: 4px; }
+
+/* ---- Celebration toast ---- */
+.toast { position: fixed; left: 50%; bottom: calc(var(--tab-h) + 30px); transform: translate(-50%, 20px); background: #6b4fa0; color: #fff; padding: 11px 18px; border-radius: 999px; font-weight: 600; font-size: 14px; box-shadow: 0 6px 20px rgba(0,0,0,.2); opacity: 0; transition: opacity .25s, transform .25s; z-index: 60; pointer-events: none; }
+.toast.show { opacity: 1; transform: translate(-50%, 0); }
+
+/* ---- Print (the weekly plan) ---- */
+@media print {
+  .tabbar, .app-header, .toolbar, .day-actions, .section-label, .reminder, .tpl-row, .fab { display: none !important; }
+  body { padding: 0; }
+  .day-card { break-inside: avoid; box-shadow: none; }
+}
+
+/* ---- Dark theme ---- */
+:root[data-theme="dark"] {
+  --bg: #211c18; --card: #2c2621; --ink: #f0e7dd; --muted: #a99c8d; --line: #3c342d;
+  --accent: #f4a259; --accent-ink: #ffc98f; --good: #6cc070; --danger: #e76f8f;
+  --shadow: 0 2px 10px rgba(0,0,0,0.25);
+}
+:root[data-theme="dark"] .app-header { background: linear-gradient(135deg, #3a2c1c, #2c2621); }
+:root[data-theme="dark"] .tabbar, :root[data-theme="dark"] .modal,
+:root[data-theme="dark"] .search, :root[data-theme="dark"] .field input,
+:root[data-theme="dark"] .field select, :root[data-theme="dark"] .field textarea,
+:root[data-theme="dark"] .chip, :root[data-theme="dark"] .seg-btn.on { background: var(--card); color: var(--ink); }
+:root[data-theme="dark"] .b, :root[data-theme="dark"] .seg, :root[data-theme="dark"] .day-chip,
+:root[data-theme="dark"] .pill, :root[data-theme="dark"] .reminder { background: #38302a; }
+/* keep status colors legible on dark (the pale pastel bgs wash out) */
+:root[data-theme="dark"] .pill.allergen { background: #4a2630; color: #ffb3c4; }
+:root[data-theme="dark"] .pill.seedflag { background: #4a3416; color: #ffcf8a; }
+:root[data-theme="dark"] .pill.cold { background: #1f3a4a; color: #9fd4ef; }
+:root[data-theme="dark"] .pill.recipe { background: #3a2f50; color: #cbb6f3; }
+:root[data-theme="dark"] .b.on, :root[data-theme="dark"] .ndot.on { background: #20402a; color: #9fe0ab; border-color: #2f6f3f; }
+:root[data-theme="dark"] .reminder.warn { background: #1f3a4a; color: #9fd4ef; }
+:root[data-theme="dark"] .item-flag { background: #4a3416; color: #ffcf8a; }
+:root[data-theme="dark"] .btn.secondary { background: var(--card); color: var(--accent-ink); border-color: var(--accent); }
+:root[data-theme="dark"] .qf-hint, :root[data-theme="dark"] .shop-from, :root[data-theme="dark"] .portion { color: var(--muted); }
+:root[data-theme="dark"] .shop-qty, :root[data-theme="dark"] .day-chip { color: var(--ink); }
