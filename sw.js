@@ -1,6 +1,6 @@
 // sw.js — minimal offline cache. Caches the app shell so it loads with no
 // internet (planes, cruises). Bump CACHE when you change any cached file.
-const CACHE = 'lunchbox-v14';
+const CACHE = 'lunchbox-v16';
 const SHELL = [
   './',
   './index.html',

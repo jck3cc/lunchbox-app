@@ -1,0 +1,110 @@
+[
+  {
+    "name": "Savory cheese & herb muffins",
+    "type": "baked finger-food",
+    "category": "dairy",
+    "key_ingredients": ["whole-wheat flour", "shredded mild cheese", "eggs", "milk", "fresh herbs (dill or parsley)"],
+    "toddler_why": "Soft, cheesy texture hides herbs; packed with calcium for growing teeth.",
+    "packable": "cold",
+    "watch": "Ensure cheese doesn't create hard bits; use soft mild varieties only."
+  },
+  {
+    "name": "Mini savory waffle sticks",
+    "type": "baked finger-food",
+    "category": "grain",
+    "key_ingredients": ["whole-wheat flour", "milk", "eggs", "shredded cheese", "finely minced cooked spinach"],
+    "toddler_why": "Waffle texture is fun to hold; spinach cooked in blend stays hidden.",
+    "packable": "room",
+    "watch": "Waffles dry out fast; pack in container to retain moisture. Test dryness first."
+  },
+  {
+    "name": "Baked polenta fries with cheese",
+    "type": "baked finger-food",
+    "category": "grain",
+    "key_ingredients": ["polenta (cornmeal)", "vegetable broth", "shredded cheese", "butter"],
+    "toddler_why": "Soft-cooked polenta sets into pliable fries; mild corn flavor is familiar.",
+    "packable": "cold",
+    "watch": "None; naturally soft and easy-to-chew."
+  },
+  {
+    "name": "Mini crustless spinach & feta quiche cups",
+    "type": "baked finger-food",
+    "category": "protein",
+    "key_ingredients": ["eggs", "milk", "finely cooked spinach", "mild feta cheese", "salt"],
+    "toddler_why": "Egg base provides iron & protein; spinach cooked down is safe and nutrient-dense.",
+    "packable": "cold",
+    "watch": "Feta can be salty—rinse crumbles first and use mild variety."
+  },
+  {
+    "name": "Baked mac & cheese cups (mini)",
+    "type": "baked finger-food",
+    "category": "dairy",
+    "key_ingredients": ["mini whole-wheat pasta", "mild cheddar cheese", "milk", "butter", "whole-wheat flour"],
+    "toddler_why": "Familiar comfort-food texture; soft pasta + creamy cheese = high eat-rate.",
+    "packable": "cold",
+    "watch": "Pasta must be cooked past al dente so it's very soft; bake into cups to prevent drying."
+  },
+  {
+    "name": "Savory pumpkin & cheese baked muffins",
+    "type": "baked finger-food",
+    "category": "veg",
+    "key_ingredients": ["whole-wheat flour", "puréed pumpkin", "shredded mild cheese", "eggs", "a dash of turmeric"],
+    "toddler_why": "Pumpkin base is naturally sweet & moist; cheese balances; turmeric adds iron.",
+    "packable": "cold",
+    "watch": "None; pumpkin moisture makes them tender."
+  },
+  {
+    "name": "Baked rice & vegetable cups (savory)",
+    "type": "baked finger-food",
+    "category": "grain",
+    "key_ingredients": ["cooked soft rice", "finely diced cooked vegetables (carrot, peas)", "shredded cheese", "egg"],
+    "toddler_why": "Rice acts as a binder; soft veg + egg make a cohesive finger-food.",
+    "packable": "cold",
+    "watch": "Rice must be fully soft; ensure veg pieces are minced (not chunky)."
+  },
+  {
+    "name": "Cornbread mini muffins (no honey)",
+    "type": "baked finger-food",
+    "category": "grain",
+    "key_ingredients": ["cornmeal", "whole-wheat flour", "eggs", "milk", "butter", "a pinch of salt"],
+    "toddler_why": "Naturally moist, mild corn flavor; no sugar needed if made savory with a touch of salt.",
+    "packable": "room",
+    "watch": "Avoid any sugar or honey; keep savory with butter & salt for toddler preference."
+  },
+  {
+    "name": "Baked ham & cheese egg cups",
+    "type": "baked finger-food",
+    "category": "protein",
+    "key_ingredients": ["eggs", "milk", "finely minced low-sodium ham", "mild shredded cheese"],
+    "toddler_why": "Ham adds savory protein appeal; eggs + cheese = soft, familiar base.",
+    "packable": "cold",
+    "watch": "Use low-sodium ham (reduce salt further if processed deli meat); watch for hard chunks of ham—mince finely."
+  },
+  {
+    "name": "Baked cheese straws (soft-crumb version)",
+    "type": "baked finger-food",
+    "category": "dairy",
+    "key_ingredients": ["whole-wheat flour", "butter", "mild cheddar cheese", "eggs", "a dash of salt"],
+    "toddler_why": "Finger-width strips are easy-grip; cheese flavor is familiar and craveable.",
+    "packable": "room",
+    "watch": "Straws should be bendable, not crispy—bake at lower temp so they stay pliable."
+  },
+  {
+    "name": "Mini savory butternut squash & cheese muffins",
+    "type": "baked finger-food",
+    "category": "veg",
+    "key_ingredients": ["whole-wheat flour", "puréed butternut squash", "shredded mild cheese", "eggs", "baking powder"],
+    "toddler_why": "Squash is naturally sweet; cheese adds savory balance; highly packable.",
+    "packable": "cold",
+    "watch": "None; purée must be smooth and cooled before mixing."
+  },
+  {
+    "name": "Baked pizza mini muffins (cheese & tomato base)",
+    "type": "baked finger-food",
+    "category": "grain",
+    "key_ingredients": ["whole-wheat flour", "baking powder", "eggs", "mild cheddar", "tomato paste (no added salt)", "milk"],
+    "toddler_why": "Pizza flavor is recognizable; tomato paste adds tang; muffin format is easy to hold.",
+    "packable": "cold",
+    "watch": "Use low-sodium tomato paste; bake until fully cooked through so muffins don't collapse when packed."
+  }
+]

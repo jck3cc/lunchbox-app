@@ -14,6 +14,11 @@ let state = load();
 // ensure every key exists (older saves + imported backups may be missing newer ones)
 function normalize(s) {
   if (!s || !Array.isArray(s.items)) s = { items: SEED_ITEMS.map(clone) };
+  // Merge in any NEW built-in foods/recipes added in app updates (matched by id),
+  // WITHOUT touching the user's own items, edits, or photos (an edited seed keeps its
+  // edit because its id already exists). Note: a seed the user deleted may reappear.
+  const have = new Set(s.items.map(i => i.id));
+  SEED_ITEMS.forEach(seed => { if (!have.has(seed.id)) s.items.push(clone(seed)); });
   s.favorites = s.favorites || {};
   s.rotation = s.rotation || {};
   s.checked = s.checked || {};
@@ -69,6 +74,8 @@ function saveDraft() { state.draft = builderDraft; save(); }
 let activeSlot = 'lunch';                      // which slot the "+" buttons add to
 let libraryFilter = 'all';
 let librarySearch = '';
+let builderFilter = 'all';   // Pack-tab picker filter: all / fav / a category
+let builderSearch = '';      // Pack-tab picker search text
 
 // Toddler serving-size hints by category (AAP; ~1 Tbsp per year of age starting point).
 const PORTIONS = {
@@ -392,15 +399,46 @@ function renderBuilder() {
   }
   wrap.append(summary);
 
-  // food picker grouped by category
+  // food picker — searchable + filterable, still grouped by category
   wrap.append(el(`<div class="section-label picker-head">Adding to ${activeSlot === 'lunch' ? '🍱 lunch' : '🍪 snack'} — tap ➕</div>`));
-  CATEGORIES.forEach(c => {
-    const items = state.items.filter(i => i.category === c.key);
-    if (!items.length) return;
-    wrap.append(el(`<div class="section-label" style="margin-top:10px">${c.emoji} ${c.label}</div>`));
-    items.forEach(it => wrap.append(builderRow(it)));
-  });
+
+  const psearch = el(`<input class="search" placeholder="Search foods…" value="${esc(builderSearch)}">`);
+  psearch.oninput = (e) => { builderSearch = e.target.value; fillPicker($('#picker-list')); };
+  wrap.append(psearch);
+
+  const pchips = el('<div class="chips"></div>');
+  const mkp = (key, label) => {
+    const c = el(`<button class="chip ${builderFilter === key ? 'active' : ''}">${label}</button>`);
+    c.onclick = () => { builderFilter = key; render(); };
+    return c;
+  };
+  pchips.append(mkp('all', 'All'));
+  pchips.append(mkp('fav', '⭐ Favorites'));
+  CATEGORIES.forEach(c => pchips.append(mkp(c.key, `${c.emoji} ${c.label}`)));
+  wrap.append(pchips);
+
+  const plist = el('<div id="picker-list"></div>');
+  wrap.append(plist);
+  fillPicker(plist);
   return wrap;
+}
+
+// fill the Pack-tab picker list honoring search + filter, keeping category grouping
+function fillPicker(list) {
+  const q = builderSearch.trim().toLowerCase();
+  const match = (i) =>
+    (builderFilter === 'all' ? true : builderFilter === 'fav' ? isFav(i.id) : i.category === builderFilter)
+    && (!q || i.name.toLowerCase().includes(q) || (i.prep || '').toLowerCase().includes(q));
+  list.innerHTML = '';
+  let any = false;
+  CATEGORIES.forEach(c => {
+    const items = state.items.filter(i => i.category === c.key && match(i));
+    if (!items.length) return;
+    any = true;
+    list.append(el(`<div class="section-label" style="margin-top:10px">${c.emoji} ${c.label}</div>`));
+    items.forEach(it => list.append(builderRow(it)));
+  });
+  if (!any) list.append(el('<div class="empty">No foods match.</div>'));
 }
 
 // one slot's list inside the box summary

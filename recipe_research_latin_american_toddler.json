@@ -1,0 +1,110 @@
+[
+  {
+    "name": "Black Bean Soft Tacos (Cheese & Veggie)",
+    "type": "Mexican/handheld",
+    "category": "protein",
+    "key_ingredients": ["soft flour tortillas", "refried black beans", "shredded cheese", "diced avocado", "corn"],
+    "toddler_why": "Soft bean base, mild cheese, natural sweetness of corn — easy to self-feed torn pieces.",
+    "packable": "cold",
+    "watch": "none"
+  },
+  {
+    "name": "Arepas (Corn Patties) with Cheese & Shredded Chicken",
+    "type": "Venezuelan/Colombian",
+    "category": "grain",
+    "key_ingredients": ["arepa flour (harina de maíz)", "water", "salt", "queso fresco or American cheese", "shredded cooked chicken"],
+    "toddler_why": "Naturally gluten-free, soft interior, mild corn flavor; split and fill with protein.",
+    "packable": "cold",
+    "watch": "none"
+  },
+  {
+    "name": "Soft Plantain Mash (Purée Style)",
+    "type": "Caribbean/Latin",
+    "category": "fruit",
+    "key_ingredients": ["ripe yellow plantain", "butter", "salt"],
+    "toddler_why": "Naturally sweet, creamy texture when cooked soft; no choking hazard.",
+    "packable": "cold",
+    "watch": "none"
+  },
+  {
+    "name": "Arroz Caldo Lite (Rice Broth with Chicken & Ginger)",
+    "type": "Filipino/Spanish",
+    "category": "grain",
+    "key_ingredients": ["rice", "chicken broth", "shredded chicken", "ginger", "turmeric"],
+    "toddler_why": "Warm, soothing, easy to eat with a spoon; mild spice from ginger aids digestion.",
+    "packable": "thermos",
+    "watch": "none"
+  },
+  {
+    "name": "Pupusas (Soft Corn Cakes) with Cheese & Refried Beans",
+    "type": "Salvadoran",
+    "category": "grain",
+    "key_ingredients": ["masa harina", "water", "salt", "shredded cheese (quesillo or mozzarella)", "refried beans"],
+    "toddler_why": "Thick, doughy, mild; can tear into small pieces; warm and comforting.",
+    "packable": "cold",
+    "watch": "none"
+  },
+  {
+    "name": "Elote Corn Fritters (No Mayo Version)",
+    "type": "Mexican",
+    "category": "veg",
+    "key_ingredients": ["fresh corn kernels", "flour", "egg", "cheese", "mild cheddar"],
+    "toddler_why": "Tender corn pieces bound softly; no sticky corn-cob hazard.",
+    "packable": "cold",
+    "watch": "choking risk: ensure interior is fully cooked soft; max ½-inch pieces"
+  },
+  {
+    "name": "Picadillo Lettuce Wraps (Mild Ground Beef)",
+    "type": "Cuban/Spanish",
+    "category": "protein",
+    "key_ingredients": ["ground beef", "diced tomato", "diced carrots", "raisins", "soft lettuce leaves", "butter lettuce or romaine"],
+    "toddler_why": "Mild ground meat texture, naturally sweet raisins, soft lettuce wraps; easy to tear.",
+    "packable": "cold",
+    "watch": "none"
+  },
+  {
+    "name": "Tamale Filling Cups (Cheese, Rajas, Corn Soft Filling Only)",
+    "type": "Mexican",
+    "category": "veg",
+    "key_ingredients": ["corn masa", "cheese", "roasted poblano pepper (diced soft)", "corn puree"],
+    "toddler_why": "Steamed soft, filled with mild cheese and corn sweetness; rajas are tender.",
+    "packable": "cold",
+    "watch": "none"
+  },
+  {
+    "name": "Ceviche-Inspired Softened Fish with Sweet Potato",
+    "type": "Peruvian",
+    "category": "protein",
+    "key_ingredients": ["poached mild white fish (cod/tilapia)", "diced sweet potato", "lime juice (light)", "cilantro (no raw herbs)"],
+    "toddler_why": "Flaky, mild fish blended with sweet potato softness; lime adds brightness without heat.",
+    "packable": "cold",
+    "watch": "choking risk: ensure fish is deboned and flaked fine; max ¼-inch flakes"
+  },
+  {
+    "name": "Black Bean & Corn Mash (Thickened with Cheese)",
+    "type": "Latin/comfort",
+    "category": "protein",
+    "key_ingredients": ["cooked black beans (mashed)", "corn", "shredded cheese", "butter", "salt"],
+    "toddler_why": "Smooth legume base, corn sweetness, cheese richness; spoon-friendly.",
+    "packable": "cold",
+    "watch": "none"
+  },
+  {
+    "name": "Yuca Fries Soft-Baked (Cassava Root)",
+    "type": "Caribbean/Latin",
+    "category": "veg",
+    "key_ingredients": ["yuca root", "olive oil", "salt"],
+    "toddler_why": "Starchy, mild, naturally sweet when soft-cooked; breaks apart easily.",
+    "packable": "cold",
+    "watch": "choking risk: ensure pieces ≤½ inch and fully softened; no hard edges"
+  },
+  {
+    "name": "Chiles Rellenos Filling (Soft Cheese & Roasted Pepper in Egg Nest)",
+    "type": "Mexican",
+    "category": "dairy",
+    "key_ingredients": ["roasted poblano pepper", "shredded cheese (Oaxaca or mozzarella)", "egg", "tomato broth (mild)"],
+    "toddler_why": "Custard-soft, cheesy filling, roasted pepper is tender; familiar egg comfort.",
+    "packable": "cold",
+    "watch": "none"
+  }
+]
